@@ -137,7 +137,7 @@ The SUP process is guided by the IETF's tenet, "rough consensus and running code
 
 Rough consensus is achieved through the Optimism Protocol Devs (OPD) call, see [below](#optimism-protocol-devs).
 
-The "running code" part is encouraged by the requirement for SUPs to run on a set of Alphanets and Betanets according to the [OP Stack release process](https://github.com/ethereum-optimism/pm/blob/main/docs/release-process.md). For a SUP to be in view of the OPD call, an implmentation must have at least run on an Alphanet and thereby achieved `Candidate` staus.
+The "running code" part is encouraged by the requirement for SUPs to run on a set of Alphanets and Betanets according to the [OP Stack release process](https://github.com/ethereum-optimism/pm/blob/main/docs/release-process.md). For a SUP to be in scope for the OPD call, an implementation must have at least run on an Alphanet and thereby achieved `Candidate` staus.
 
 ## Roles
 
