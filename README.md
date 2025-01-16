@@ -56,8 +56,10 @@ SUPs, and the process around them, are designed to achieve three goals:
 
 ## Scope
 
-Any OP Stack feature that requires an Optimism governance vote should go through
-the SUP process (emergency upgrades are a possible exception to this rule).
+Any OP Stack feature that requires an Optimism governance vote should go
+through the SUP process (emergency upgrades are a possible exception to this
+rule). OP Stack features that do not require a governance vote may choose to
+use the SUP process.
 
 Some guidelines as to when a governance vote is required are discussed under
 heading 1 of [this
