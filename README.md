@@ -118,6 +118,19 @@ simgle sentence explaining why the SUP was closed or withdrawn.
 
 ### SUP Sections
 
+A SUP is not expected to be complete and fully formed on first submission. The
+design review stage is iterative, and SUPs will progress in completeness until
+they acquire `Candidate` status.
+
+A `Draft` SUP should contain at least the Description, the Motivation and
+Impact, and the Design sections. Starting work on the FMA section as early as
+possible is also recommended.
+
+We recognise that the specification is often informed by working on an
+implementation. Therefore, the Specification section does not need to be fully
+signed-off until after the feature has run on an Alphanet, as per the
+[flowchart](#process-flowchart).
+
 - **Description**
   - A concise technical paragraph providing an overview of the SUP. Someone
     should be able to read only this description to get the gist of the SUP's
