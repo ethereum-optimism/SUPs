@@ -37,16 +37,18 @@ the outset, and it is intended to iterate and improve it over time.
 
 SUPs, and the process around them, are designed to achieve three goals:
 
-1. Increase the _inclusivity_ of the OP Stack upgrade process.
+1. Increase the _inclusiveness_ of the OP Stack upgrade process.
 
     Any person or organisation involved in the Optimism protocol development is
-    able to make SUPs and participate in the SUP decision-making workflow.
+    able to make SUPs and participate in the SUP decision-making workflow. SUPs
+    provide an accessible "front-end" for OP Stack development.
 
 1. Increase the _transparency_ of the OP Stack upgrade process.
 
     SUP documentation is public. The SUP decision-making process is open and
-    transparent. Discussion happens publicly on GitHub, and decision making on
-    calls that are open and recorded, with the recordings being shared publicly.
+    transparent. Discussion happens publicly on GitHub and Discord, and decision
+    making on calls that are open and recorded, with the recordings being shared
+    publicly.
 
 1. Improve _discipline_ around the OP Stack upgrade process.
 
@@ -74,10 +76,15 @@ replaced with the assigned SUP number. Any assets referred to by the SUP
 (images, data) must be placed in the directory `assets/SUP-NNNN/`. Again, this
 will be renamed with the SUP number once assigned, before merging.
 
+SUPs are written in [GitHub Flavored Markdown](https://github.github.com/gfm/),
+with all prose in English. They should pass
+[markdownlint](https://github.com/DavidAnson/markdownlint) cleanly with its
+default ruleset.
+
 ### SUP Header
 
-This is metadata associated with the SUP in YAML format, sometimes called
-frontmatter.
+A SUP begins with metadata associated with the SUP in YAML format, sometimes
+called frontmatter.
 
 ```yaml
 sup: NNNN
@@ -111,10 +118,11 @@ The following fields are required, even if empty.
 - `requires`: A comma-separated list of existing SUP numbers that this SUP
   depends on. SUPs that are `Final` can be omitted.
 - `status`: This will start at `Draft` for all SUPs, and will be updated by the
-  SUP editors as the SUP progresses through the stages.
+  SUP editors as the SUP progresses through the stages. The full list of
+  statuses can be found [below](#status-labels).
 
 An optional field, `closed-reason` may be present for `Closed` SUPs. It is a
-simgle sentence explaining why the SUP was closed or withdrawn.
+single sentence explaining why the SUP was closed or withdrawn.
 
 ### SUP Sections
 
@@ -138,7 +146,7 @@ signed-off until after the feature has run on an Alphanet, as per the
 - **Motivation and Impact**
   - Provides the reason we should implement the SUP. Clearly explain why the
     existing protocol specification is inadequate to address the problem that
-    the EIP solves. As for impact, this means describing the anticipated
+    the SUP solves. As for impact, this means describing the anticipated
     benefits of the SUP and who exactly will gain those benefits. SUPs with low
     or unclear benefits are unlikely to progress.
 - **Design**
@@ -146,15 +154,13 @@ signed-off until after the feature has run on an Alphanet, as per the
     approach. Previous design documents can be found
     [here](https://github.com/ethereum-optimism/design-docs/tree/main/protocol),
     and this section should follow a similar format.
-  - &#x1F53A; _TODO: should the design be in-line here, or a separate document
-    as is the case currently?_
 - **Specification**
   - Describe how the SUP should be implemented. The specification should be
     sufficiently detailed to allow an implementation to be written without
     relying on other resources. Previous specification documents can be found
     [here](https://github.com/ethereum-optimism/specs/tree/main/specs), and this
     section should follow a similar format.
-  - &#x1F53A; _TODO: should the specification be in-line here, or a separate
+  - &#x1F53A;_TODO: should the specification be in-line here, or a separate
     document as is the case currently? Advantage of keeping it separate is that
     it forms a [nice gitbook](https://specs.optimism.io/)._
 - **Backwards Compatibility**
@@ -172,6 +178,7 @@ signed-off until after the feature has run on an Alphanet, as per the
     progress. It should be updated only by a SUP editor.
 
 ### Style Guide
+<!-- markdownlint-disable no-emphasis-as-heading -->
 
 **Titles**
 
@@ -211,6 +218,7 @@ discouraged. However, the guidelines in
 [EIP-1](https://eips.ethereum.org/EIPS/eip-1#linking-to-external-resources)
 should be applied, suitably reinterpreted for the OP Stack.
 
+<!-- markdownlint-enable no-emphasis-as-heading -->
 ## SUP Process
 
 The SUP process is guided by the IETF's tenet, "rough consensus and running
@@ -222,8 +230,8 @@ Rough consensus is achieved through the Optimism Protocol Devs (OPD) call, see
 The "running code" part is encouraged by the requirement for SUPs to run on a
 set of Alphanets and Betanets according to the [OP Stack release
 process](https://github.com/ethereum-optimism/pm/blob/main/docs/release-process.md).
-For a SUP to be in scope for the OPD call, an implementation must have at least
-run on an Alphanet and thereby achieved `Candidate` staus.
+For a SUP to be in scope for the OPD call, an implementation must have achieved
+`Candidate` status (at a minimum) by having run on an Alphanet.
 
 ### Roles
 
@@ -242,14 +250,14 @@ Certain roles are defined to support the SUP process.
     shepherding that SUP through the process from start to finish. Part of the
     champion's role is to vet the idea before submission - that is, to gain some
     confidence that the feature is needed and is likely to be accepted by the
-    broader OP Stack dev community. The champion should be trying to build
+    broader OP Stack dev community. The champion should actively try to build
     community consensus around the SUP.
 
 ### Key Forums
 
 Three key forums are shown on the flowchart in rectangles: Design Review,
 Optimism Protocol Devs, and Governance. The first two form part of the SUPs
-process - Optimism Governance voting is an existing process that should be
+process, while Optimism Governance voting is an existing process that should be
 considered external to the SUP process.
 
 #### Design Review
@@ -258,7 +266,7 @@ The Design Review is a relatively unstructured process of quality-checking SUP
 submissions and confirming their technical feasibility and desirability. It is
 an iterative process with the goal of progressing SUPs to `Eligible` status. The
 SUP's Champion is responsible for ensuring that progress is made. Note that this
-part of the proces is not yet tightly defined, and will be evolved to ensure
+part of the process is not yet tightly defined, and will be evolved to ensure
 that it is effective.
 
 Design Review discussion will take place in the open: in public GitHub comments
@@ -282,7 +290,7 @@ being added to the pool of `Eligible` SUPs.
 
 #### Optimism Protocol Devs
 
-Optmism Protocol Devs (OPD) is a regular interactive call modelled on the
+Optimism Protocol Devs (OPD) is a regular interactive call modelled on the
 Ethereum All Core Devs (ACD) calls. The goals of this meeting are first to
 progress `Candidate` SUPs towards being included in OP Stack upgrades, and
 second to coordinate the delivery of those upgrades in accordance with the [OP
@@ -301,10 +309,10 @@ broader.
 Calls are managed by the Chair, and decisions are reached by [rough
 consensus](https://datatracker.ietf.org/doc/html/rfc7282), guided by the Chair.
 
-The OPD process can be thought of as analogous to the block building
-process. SUPs are extracted from the pool of `Eligible` candidates and bundled
-into blocks that are submitted as a unit to governance before being appended to
-the chain of protocol upgrades.
+The OPD process can be thought of as analogous to a block building process. SUPs
+are extracted from the pool of `Eligible` candidates and bundled into blocks
+that are submitted as a unit to governance before being appended to the chain of
+protocol upgrades.
 
 ### Status Labels
 
