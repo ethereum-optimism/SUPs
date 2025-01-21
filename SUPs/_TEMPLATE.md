@@ -25,7 +25,7 @@ status: Draft
 
 ## Progress Checklist
 
-_To be updated only by SUP editors_
+_To be updated only by SUP editors_.
 
 Prior to SUP merge:
 
