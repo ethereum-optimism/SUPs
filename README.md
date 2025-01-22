@@ -240,11 +240,13 @@ Certain roles are defined to support the SUP process.
 - **OPD Chair**
   - The OPD Chair assembles the agenda for and coordinates the regular OPD
     calls. The chair is responsible for gauging rough consensus and confirming
-    decisions made.
+    decisions made, and also for assembling and submitting the governance
+    proposal for an upgrade.
 - **SUP Editors**
   - The SUP Editors are a team having write/merge access to the SUPs GitHub
     repository. They are responsible for maintaining the repo and SUPs in good
-    order. All PRs must be approved by a SUP editor before merging.
+    order, including assigning SUP numbers. All PRs must be approved by a SUP
+    editor before merging.
 - **SUP Champion**
   - Every SUP must have single, named individual who is responsible for
     shepherding that SUP through the process from start to finish. Part of the
