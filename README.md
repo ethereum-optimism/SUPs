@@ -160,9 +160,9 @@ signed-off until after the feature has run on an Alphanet, as per the
     relying on other resources. Previous specification documents can be found
     [here](https://github.com/ethereum-optimism/specs/tree/main/specs), and this
     section should follow a similar format.
-  - &#x1F53A;_TODO: should the specification be in-line here, or a separate
-    document as is the case currently? Advantage of keeping it separate is that
-    it forms a [nice gitbook](https://specs.optimism.io/)._
+  - It is permitted and encouraged for the specification here to be a link out
+    to a Spec PR in that repo so that the OP Spec can be formatted as a [nice
+    gitbook](https://specs.optimism.io/).
 - **Backwards Compatibility**
   - Describe any incompatibilities and their consequences.
 - **Failure Modes Analysis**
