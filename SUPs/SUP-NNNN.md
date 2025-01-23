@@ -2,7 +2,7 @@
 sup: NNNN
 title: Batched Commitments for AltDA-based OP Stack Chains
 champion:
-author:
+author: alvarius (@alvrs), tdot (@tchardin), vdrg (@vdrg)
 created: 2025-01-23
 eligible: YYYY-MM-DD
 requires:
@@ -19,11 +19,13 @@ AltDA-based OP Stack chains currently submit DA commitments to L1 individually, 
 
 The implementation of batched commitments will provide several key benefits:
 
-1. **Cost Reduction**: By combining multiple commitments into a single L1 transaction, chains will save significantly on base transaction costs, as only one 21,000 gas fee will be paid per batch instead of per commitment.
+1. **Cost Reduction**: By combining multiple commitments into a single L1 transaction, some chains will save significantly on L1 transaction costs, as only a single 21,000 gas fee will be paid per batch instead of per commitment.
 2. **Preserved Security**: Each sub-commitment within a batch remains individually challengeable, maintaining the security properties of the existing system.
 3. **Minimal Infrastructure Changes**: The proposal requires minimal changes to the existing derivation pipeline, as the AltDA Data Source will handle the decoding of batched commitments transparently.
 
 ## Design
+
+### Overview
 
 The design introduces a new commitment type while maintaining compatibility with existing commitment types and challenge mechanisms. Here are the key design decisions:
 1. **New Commitment Type**
@@ -38,17 +40,7 @@ The design introduces a new commitment type while maintaining compatibility with
     - Single L1 transaction contains multiple sub-commitments
     - AltDA Data Source decodes and processes each sub-commitment independently
     - Existing challenge mechanisms remain unchanged
-4. **Alternative Approaches Considered**
 
-    We evaluated an alternative approach for DA Server integration:
-
-    - **DA Server Aggregation**: This approach would send all frames together to the DA Server, with the batched commitment encoding handled server-side
-    - **Advantages**: Batcher wouldn't need to be aware of batched commitments
-    - **Disadvantages**:
-        - Would require modifying DA Server API semantics
-        - Each frame would still need independent storage for challenge purposes
-        - Batcher would still require changes to support multiple frame submission
-    - **Decision**: Rejected in favor of the simpler approach where the batcher handles batching explicitly
 
 ## Specification
 
@@ -88,9 +80,6 @@ For two Keccak256 sub-commitments (each 32 bytes), the L1 transaction data would
 | comm2_len | 0x0020 | length = 32 |
 | comm2_data | [32 bytes] | Second commitment hash |
 
-#### Optimization for Keccak256
-
-For batches containing only Keccak256 commitments, a more efficient encoding could omit the length prefix since these commitments are always 32 bytes. While this optimization would reduce gas costs, it has not been included in the main specification since Keccak256 Commitments are expected to be deprecated in the future.
 
 ### Implementation Requirements
 
@@ -99,9 +88,21 @@ For batches containing only Keccak256 commitments, a more efficient encoding cou
     - Extract and validate each sub-commitment independently
     - Maintain existing challenge mechanisms for each sub-commitment
 2. The batcher MUST:
-    - Support configuration for multiple frames per channel when using Batched Commitments
+    - Support configuration for consuming multiple frames when using Batched Commitments (similar to current implementation for Blobs DA)
     - Submit each frame to the DA Server independently
     - Construct a valid batched commitment from returned commitments
+
+### Alternative Approaches Considered
+
+#### Alternative Encoding for Keccak256 Sub-commitments
+
+For batches containing only Keccak256 commitments, a more efficient encoding could omit the length prefix since these commitments are always 32 bytes. While this optimization would reduce gas costs, it has not been included in the main specification since Keccak256 Commitments are expected to be deprecated in the future.
+
+#### Aggregating Commitments in DA Server
+
+An alternative approach for constructing Batched Commitments is to do it in the DA Server. The batcher would send the concatenated frames to the server and the server would be in charge of parsing and constructing the resulting commitment.
+
+However, to keep sub-commitments individually challengeable (and not change the existing logic related to challenges) the server would need to store the input frame for each sub-commitment independently, which would break the server's API semantics.
 
 ## Backwards Compatibility
 
@@ -109,21 +110,7 @@ This upgrade introduces a new commitment type while maintaining full compatibili
 
 ## Failure Modes Analysis
 
-1. **Batch Size Manipulation**
-    - Risk: Malicious actors could attempt to create oversized batches
-    - Mitigation: Implement strict size limits and validation
-2. **Sub-commitment Validation**
-    - Risk: Invalid sub-commitments within valid batch structure
-    - Mitigation: Maintain independent validation for each sub-commitment
-3. **Challenge Mechanism Integrity**
-    - Risk: Batch structure could complicate challenge process
-    - Mitigation: Ensure each sub-commitment maintains independent challengeability
-4. **Processing Errors**
-    - Risk: Incorrect length parsing leading to misaligned data
-    - Mitigation: Implement robust error handling and verification
-5. **DA Server Integration**
-    - Risk: Potential race conditions in frame submission
-    - Mitigation: Implement proper synchronization and error handling
+Batched commitments are subject to same failure modes as existing commitments.
 
 ---
 
