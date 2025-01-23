@@ -19,7 +19,7 @@ AltDA-based OP Stack chains currently submit DA commitments to L1 individually, 
 
 The implementation of batched commitments will provide several key benefits:
 
-1. **Cost Reduction**: By combining multiple commitments into a single L1 transaction, some chains will save significantly on L1 transaction costs, as only a single 21,000 gas fee will be paid per batch instead of per commitment.
+1. **Cost Reduction**: By combining multiple commitments into a single L1 transaction, some chains will save significantly on L1 transaction costs, as only a single 21,000 gas fee will be paid per batch instead of per commitment (excluding the additional calldata costs).
 2. **Preserved Security**: Each sub-commitment within a batch remains individually challengeable, maintaining the security properties of the existing system.
 3. **Minimal Infrastructure Changes**: The proposal requires minimal changes to the existing derivation pipeline, as the AltDA Data Source will handle the decoding of batched commitments transparently.
 
