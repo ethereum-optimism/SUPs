@@ -1,5 +1,14 @@
 # Superchain Upgrade Proposals
 
+&#x1F6A7; Please note that this is a beta-version of a Superchain upgrade
+process that we will debug and evolve over time. We welcome teams to begin
+contributing SUPs, and we expect that from Upgrade 15 (mid-2025) SUPs will be
+the primary or only path to upstreaming features into the OP Stack. Meanwhile,
+please be patient if SUP progress is a little slower while we continue to work
+on Upgrades 12-14. &#x1F6A7;
+
+---
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
