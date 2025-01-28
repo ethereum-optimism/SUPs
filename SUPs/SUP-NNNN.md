@@ -1,7 +1,7 @@
 ---
 sup: NNNN
 title: Batched Commitments for AltDA-based OP Stack Chains
-champion:
+champion: vdrg (@vdrg)
 author: alvarius (@alvrs), tdot (@tchardin), vdrg (@vdrg)
 created: 2025-01-23
 eligible: YYYY-MM-DD
