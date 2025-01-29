@@ -91,6 +91,7 @@ For two Keccak256 sub-commitments (each 32 bytes), the L1 transaction data would
     - Support configuration for consuming multiple frames when using Batched Commitments (similar to current implementation for Blobs DA)
     - Submit each frame to the DA Server independently
     - Construct a valid batched commitment from returned commitments
+    - Make sure that sub-commitments are encoded in order, so that consuming frames by the derivation pipeline adheres to Holocene's strict ordering rules
 
 ### Alternative Approaches Considered
 
