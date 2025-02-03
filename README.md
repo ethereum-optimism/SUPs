@@ -238,9 +238,9 @@ Rough consensus is achieved through the Optimism Protocol Devs (OPD) call, see
 
 The "running code" part is encouraged by the requirement for SUPs to run on a
 set of Alphanets and Betanets according to the [OP Stack release
-process](https://github.com/ethereum-optimism/pm/blob/main/docs/release-process.md).
-For a SUP to be in scope for the OPD call, an implementation must have achieved
-`Candidate` status (at a minimum) by having run on an Alphanet.
+process](https://pm.optimism.io/release-process.html). For a SUP to be in scope
+for the OPD call, an implementation must have achieved `Candidate` status (at a
+minimum) by having run on an Alphanet.
 
 ### Roles
 
