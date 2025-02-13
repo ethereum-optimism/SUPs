@@ -305,8 +305,7 @@ Optimism Protocol Devs (OPD) is a regular interactive call modelled on the
 Ethereum All Core Devs (ACD) calls. The goals of this meeting are first to
 progress `Candidate` SUPs towards being included in OP Stack upgrades, and
 second to coordinate the delivery of those upgrades in accordance with the [OP
-Stack release
-process](https://github.com/ethereum-optimism/pm/blob/main/docs/release-process.md).
+Stack release process](https://pm.optimism.io/release-process.html).
 
 OPD calls are upgrade-centric. They deal primarily with SUPs that have made it
 to `Candidate` status, and their task is to progress an optimal bundle of such
